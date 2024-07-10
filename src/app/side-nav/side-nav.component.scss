@@ -1,0 +1,121 @@
+.sidebar {
+    // width: 280px;
+    transition: .3s linear;
+
+    .sidebar-toggel-btn {
+        position: absolute;
+        top: 50%;
+        right: -20px;
+        transform: translateY(-50%);
+        transition: .4s linear;
+    }
+
+    .logo-text {
+        opacity: 1;
+        transition: .2s
+    }
+
+
+}
+
+
+// .sidebar:hover, .sidebar:active {
+//     width: 18rem;
+
+//     .logo-text {
+//         opacity: 1;
+//         transition : .2s
+//     }
+
+//     .sidebar-link span {
+//         opacity: 1;
+//         transition: .4s linear;
+//     }
+
+//     .sidebar-toggel-btn {
+//         transform: translateY(-50%) rotate(180deg);
+//     }
+// }
+
+
+.sidebar-menu {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 70px);
+
+    // .sidebar-link span {
+    //     opacity: 0;
+    //     transition: .4s linear;
+    // }
+
+    .sidebar-link fa-icon {
+        min-width: 56px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .sidebar-link {
+        height: 52px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: white;
+        text-transform: uppercase;
+        font-size: 20px;
+        text-decoration: none;
+        overflow: hidden;
+        position: relative;
+        border-radius: 12px;
+    }
+
+    .sidebar-link::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 100%;
+        background-color: #2c3e50;
+        z-index: -1;
+        transition: .4s;
+    }
+
+    .sidebar-link:hover::before {
+        width: 95%;
+        border-radius: 12px;
+    }
+
+    .bottom-menu {
+        border-top: 2px solid gray;
+        height: calc(100% - 70px);
+
+        .sidebar-link {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: white;
+            text-transform: uppercase;
+            font-size: 20px;
+            text-decoration: none;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px;
+        }
+
+        .sidebar-link::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background-color: #2c3e50;
+            z-index: -1;
+            transition: .4s;
+        }
+
+        .sidebar-link:hover::before {
+            width: 95%;
+            border-radius: 12px;
+        }
+    }
+}
