@@ -1,5 +1,8 @@
+
+declare var google: any;
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faAnglesRight, faGauge, faChartSimple, faDollarSign, faBell, faStore, faWallet, faArrowRightFromBracket, faGear } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,13 +23,16 @@ export class SideNavComponent {
   wallet = faWallet
   gear = faGear
   signOut = faArrowRightFromBracket
+  sidebarActive : boolean = false
+
+ 
 
    @ViewChild('sidebar') sidebar !: ElementRef<HTMLElement>
    @ViewChild('sidebar_toggle') sidebar_toggle !: ElementRef<HTMLElement>
 
-  sidebarActive : boolean = false
+   constructor(private router:Router){}
   ngOnInit(): void {
-  
+    
   }
 
   toggle_sidebar()
@@ -36,4 +42,9 @@ export class SideNavComponent {
     this.sidebar.nativeElement.classList.toggle("active");
   }
   
+  logOut(){
+    google.accounts.id.disableAutoSelect();
+    sessionStorage.clear();
+    this.router.navigate(['/'])    
+  }
 }

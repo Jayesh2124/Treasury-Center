@@ -24,7 +24,10 @@ export class DashboardComponent implements OnInit{
   pieChart : any = []
   pieChart_1 : any = []
 
+  currentUser : any 
+
   ngOnInit(): void {
+    this.currentUser = JSON.parse(sessionStorage.getItem('LoggedIn_User') || '{}' )
 
     //  const labels = Utils.months({count: 7});
     const data = {
