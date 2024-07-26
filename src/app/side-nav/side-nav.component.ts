@@ -1,15 +1,15 @@
 
 declare var google: any;
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faAnglesRight, faGauge, faChartSimple, faDollarSign, faBell, faStore, faWallet, faArrowRightFromBracket, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faAnglesRight, faGauge, faChartSimple, faDollarSign, faBell,  faWallet, faArrowRightFromBracket, faGear, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-side-nav',
   standalone: true,
-  imports: [FontAwesomeModule, CommonModule],
+  imports: [FontAwesomeModule, CommonModule, RouterModule],
   templateUrl: './side-nav.component.html',
   styleUrl: './side-nav.component.scss'
 })
@@ -19,32 +19,34 @@ export class SideNavComponent {
   chart = faChartSimple
   dollar = faDollarSign
   bell = faBell
-  store = faStore
+  profileIcon = faAddressCard
   wallet = faWallet
   gear = faGear
   signOut = faArrowRightFromBracket
-  sidebarActive : boolean = false
-
- 
+  sidebarActive : boolean = false 
 
    @ViewChild('sidebar') sidebar !: ElementRef<HTMLElement>
    @ViewChild('sidebar_toggle') sidebar_toggle !: ElementRef<HTMLElement>
 
-   constructor(private router:Router){}
+   constructor(private router:Router, private render : Renderer2 ){}
   ngOnInit(): void {
-    
+   
   }
 
   toggle_sidebar()
   {
     debugger;
-    // this.sidebarActive = !this.sidebarActive
-    this.sidebar.nativeElement.classList.toggle("active");
+    let element = this.sidebar.nativeElement.classList
+    element.toggle("active");
   }
   
   logOut(){
-    google.accounts.id.disableAutoSelect();
-    sessionStorage.clear();
+    debugger;
+    if(sessionStorage.length > 0 )
+    {
+      google.accounts.id.disableAutoSelect();
+      sessionStorage.clear();
+    }
     this.router.navigate(['/'])    
   }
 }

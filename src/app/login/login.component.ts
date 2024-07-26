@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { callback } from 'chart.js/dist/helpers/helpers.core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FontAwesomeModule, ReactiveFormsModule, CommonModule],
+  imports: [FontAwesomeModule, ReactiveFormsModule, CommonModule, MatFormFieldModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -19,12 +21,13 @@ export class LoginComponent implements OnInit {
   eyeIcon = faEye
   loginForm !: FormGroup
 
+
   isLoginFormActive: boolean = false;
   @ViewChild('loginPassword') passwordField !: ElementRef<HTMLElement>
   @ViewChild('LoginForm') LoginForm !: ElementRef<HTMLElement>
   @ViewChild('RegisterForm') RegisterForm !: ElementRef<HTMLElement>
 
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(private router: Router, private fb: FormBuilder, private snakeBar: MatSnackBar) { }
 
   ngOnInit(): void {
     google.accounts.id.initialize({
@@ -63,19 +66,29 @@ export class LoginComponent implements OnInit {
     }, 2000)
   }
 
- private decodeToken(token : string){
-  return JSON.parse(atob(token.split(".")[1]));
- }
+  private decodeToken(token: string) {
+    return JSON.parse(atob(token.split(".")[1]));
+  }
 
-  handelLogin(Response : any)
-  {
+  handelLogin(Response: any) {
     const payload = this.decodeToken(Response.credential);
     sessionStorage.setItem('LoggedIn_User', JSON.stringify(payload));
+    this.snakeBar.open('Your Login is Successful!!', 'Close', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
     this.router.navigate(['Dashboard']);
   }
 
   Login() {
     debugger;
     console.log(this.loginForm.value);
+    this.snakeBar.open('Your Login is Successful!!', 'Close', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
+    this.router.navigate(['Dashboard']);
   }
 }

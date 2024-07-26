@@ -1,52 +1,52 @@
-<div #sidebar class="sidebar h-full fixed w-[70px] md:w-[280px]  bg-[#17202a] transition pt-[10px] pl-[14px] ">
-  <div class="relative mb-40">
-    <div class="flex items-center">
+<div #sidebar class="sidebar h-full fixed md:block hidden w-[70px] lg:w-[70px] xl:w-[280px] bg-[#17202a] transition pt-[10px] pl-[14px] ">
+  <div class="relative mb-28">
+    <div class="flex items-center mt-8">
       <img class="w-[50px] rounded-[50%] mr-4" src="../assets/investment.png" alt="Logo">
-      <h1 class="text-2xl text-slate-50 font-medium opacity-0 logo-text"> Treasury Center </h1>
+      <h1 class="text-2xl text-slate-50 font-medium hidden lg:block md:block opacity-0 logo-text"> Treasury Center </h1>
     </div>
     <div #sidebar_toggle class="sidebar-toggel-btn 
       w-7 h-7 text-center size-4 bg-white rounded-full leading-7 cursor-pointer hover:bg-black hover:text-white ">
-      <fa-icon [icon]="angles_right" (click)="toggle_sidebar()"></fa-icon>
+      <fa-icon [icon]="angles_right" (mouseHover)="toggle_sidebar()"></fa-icon>
     </div>
   </div>
   <div class="sidebar-menu">
     <div class="top-menu mb-28">
 
-      <a href="" class="sidebar-link">
+      <a [routerLink]="['/Dashboard']" routerLinkActive="active-link" class="sidebar-link">
         <fa-icon [icon]="gauge"></fa-icon>
         <span> Dashboard </span>
       </a>
-      <a href="" class="sidebar-link">
+      <!-- <a  [routerLink]="['/Dashboard']" routerLinkActive="active-link" class="sidebar-link">
         <fa-icon [icon]="chart"></fa-icon>
         <span> Analysis </span>
-      </a>
-      <a href="" class="sidebar-link">
+      </a> -->
+      <a  [routerLink]="['/Transaction-Entry']" routerLinkActive="active-link" class="sidebar-link">
         <fa-icon [icon]="dollar"></fa-icon>
-        <span> Earning </span>
+        <span> Transaction </span>
       </a>
-      <a href="" class="sidebar-link">
+      <!-- <a  [routerLink]="['/Transaction-Entry']" routerLinkActive="active-link" class="sidebar-link">
         <fa-icon [icon]="bell"></fa-icon>
         <span> Notifications </span>
+      </a> -->
+      <a [routerLink]="['/Profile']" routerLinkActive="active-link"  class="sidebar-link">
+        <fa-icon [icon]="profileIcon"></fa-icon>
+        <span> Profile </span>
       </a>
-      <a href="" class="sidebar-link">
-        <fa-icon [icon]="store"></fa-icon>
-        <span> Shop </span>
-      </a>
-      <a href="" class="sidebar-link">
+      <!-- <a  [routerLink]="['/Profile']" routerLinkActive="active-link" class="sidebar-link">
         <fa-icon [icon]="wallet"></fa-icon>
         <span> Wallet </span>
-      </a>
+      </a> -->
 
     </div>
     <div class="bottom-menu">
-      <a href="" class="sidebar-link">
+      <span  class="sidebar-link mt-6">
         <fa-icon [icon]="gear"></fa-icon>
         <span> Setting </span>
-      </a>
-      <a  class="sidebar-link" (click)="logOut()">
+      </span>
+      <span  class="sidebar-link" (click)="logOut()">
         <fa-icon [icon]="signOut"></fa-icon>
         <span> Logout </span>
-      </a>
+      </span>
     </div>
   </div>
 </div>

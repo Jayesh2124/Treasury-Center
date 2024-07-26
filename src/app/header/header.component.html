@@ -1,0 +1,27 @@
+<div class="flex justify-between gap-3">
+    <aside class="fixed">
+      <app-side-nav />
+    </aside>
+    <div class="md:ml-[17%] lg-ml-[22%] ml-[10%] mt-4 mr-4 h-[60px] w-[82%] bg-blue-300 rounded-xl flex justify-between ">
+      <div>
+        <p class="md:text-xl text-lg font-extrabold p-4 "> {{ title | titlecase }} </p> 
+      </div>
+      <div class="xl:flex hidden items-center gap-4">
+        <!-- <fa-icon [icon]="bell" class="bg-white px-1   rounded-full text-slate-300"></fa-icon> -->
+        <!-- <label > <mat-icon> currency_rupee </mat-icon> {{ accountBalance | currency }} </label> -->
+        <div class="flex flex-col justify-center items-center ">
+          <span class="font-bold"> Current Balance </span>
+          <span class="text-lg">  {{ accountBalance | currency : 'INR' }} </span>
+        
+      </div>
+        
+
+        <div class="m-4">
+          <div class="flex justify-center items-center gap-4">
+            <img [src]="currentUser.picture" alt="profile photo" class="w-10 h-10 rounded-full">
+          <span> {{ currentUser.name }} </span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

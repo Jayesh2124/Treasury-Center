@@ -1,27 +1,4 @@
-<div class="flex justify-between gap-3">
-    <aside class="fixed">
-      <app-side-nav />
-    </aside>
-    <div class="ml-auto mt-4 mr-4 h-[60px] w-[82%] bg-slate-200 rounded-xl flex justify-between ">
-      <div>
-        <fa-icon [icon]="magnify" class="bg-white p-2.5 ml-10 rounded-l-xl text-slate-300"></fa-icon> <input type="text"
-          class="rounded-r-xl w-[120vh] p-2 mr-2.5 mb-2.5 mt-2.5 " placeholder="Search">
-      </div>
-      <div class="flex items-center gap-4">
-        <fa-icon [icon]="bell" class="bg-white p-2.5   rounded-xl text-slate-300"></fa-icon>
-        <div class="m-4">
-          <div class="flex justify-center items-center gap-4">
-            <img [src]="currentUser.picture" alt="profile photo" class="w-8 h-8 rounded-full">
-          <span> {{ currentUser.name }} </span>
-        </div>
-        </div>
-        <div class="m-2">
-          <img src="../assets/investment.png" alt="user-icon" class="w-10 h-10">
-        </div>
-      </div>
-    </div>
-  </div>
-  
+<app-header [title]="componentTitle" />
   
   
   
@@ -37,7 +14,7 @@
               <label> Total Pending Task</label>
               <p> 10 </p>
             </div>
-            <canvas class="m-2 p-2 w-[310px]  " id="doughnutCanvas"> {{ doughnutChart }} </canvas>
+            <!-- <canvas class="m-2 p-2 w-[310px]  " id="doughnutCanvas"> {{ doughnutChart }} </canvas> -->
             <div class="px-6 py-4 mt-3">
               <hr>
               <div class="font-bold text-xl  flex justify-between items-center">
@@ -52,7 +29,7 @@
               <label> Total Pending Task</label>
               <p> 10 </p>
             </div>
-            <canvas class="m-2 p-2 w-[310px]  " id="pieCanvas_1"> {{ pieChart_1 }} </canvas>
+            <!-- <canvas class="m-2 p-2 w-[310px]  " id="pieCanvas_1"> {{ pieChart_1 }} </canvas> -->
             <div class="px-6 py-4 mt-3">
               <hr>
               <div class="font-bold text-xl  flex justify-between items-center">
@@ -68,7 +45,7 @@
               <p> 10 </p>
             </div>
   
-            <canvas class="m-2 p-2 w-[310px]  " id="polarCanvas"> {{ polarChart }} </canvas>
+            <!-- <canvas class="m-2 p-2 w-[310px]  " id="polarCanvas"> {{ polarChart }} </canvas> -->
   
             <div class="px-6 py-4 mt-3">
               <hr>
@@ -82,16 +59,16 @@
         </div>
   
       </div>
-      <div class="row-span-3 hidden sm:block col-start-3 bg-red-300 rounded-xl">2</div>
+      <div class="row-span-3 hidden sm:block col-start-3  rounded-xl">2</div>
       
       <div class="col-span-2 row-start-2 flex flex-col gap-4 justify-center sm:flex-row">
   
         <div class=" bg-white block rounded-2xl shadow-lg ">
-          <canvas class="m-2 p-2 w-full " id="lineCanvas_2"> {{ lineChart2 }} </canvas>
+          <!-- <canvas class="m-2 p-2 w-full " id="lineCanvas_2"> {{ lineChart2 }} </canvas> -->
         </div>
         <div class=" bg-white block rounded-2xl shadow-lg ">
           
-          <canvas class="m-2 p-2 w-full " id="canvas"> {{ chart }} </canvas>
+          <!-- <canvas class="m-2 p-2 w-full " id="canvas"> {{ chart }} </canvas> -->
         </div>
   
       </div>
@@ -102,12 +79,12 @@
               <h3 class="text-2xl font-semibold leading-7 text-gray-900"> Announcement </h3>
             </div>
             <div class="">
-              <fa-icon [icon]="magnify"
-                class="bg-white border p-2 m-0 rounded-l-xl text-slate-300 cursor-pointer"></fa-icon>
+              <!-- <fa-icon [icon]="magnify"
+                class="bg-white border p-2 m-0 rounded-l-xl text-slate-300 cursor-pointer"></fa-icon> -->
               <input type="text" class="rounded-r-xl w-80 p-2 mr-2.5 mb-2.5 mt-2.5 border " placeholder="Search">
             </div>
             <div class="flex pr-4 pt-2">
-              <fa-icon [icon]="options"> </fa-icon>
+              <!-- <fa-icon [icon]="options"> </fa-icon> -->
             </div>
   
           </div>

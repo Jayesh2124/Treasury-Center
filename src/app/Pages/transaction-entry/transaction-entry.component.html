@@ -1,0 +1,202 @@
+<app-header [title]="componentTitle" />
+<section class="" *ngIf="!isEditMode">
+    <div class=" md:ml-[17%] lg-ml-[22%] ml-auto h-full mt-4 w-[82%]  mx-auto flex justify-center ">
+        <div class=" font-sans flex h-screen justify-center w-full">
+            <div class="p-8 min-w-full">
+                <div class="mx-auto">
+                    <div
+                        class="transition-all w-full  duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h2 class=" text-blue-600">Transactions</h2>
+                        <div class="transaction-container mat-elevation-z8">
+                            <section tabindex="0">
+                                <div class="flex flex-row justify-between">
+                                    <mat-form-field class="m-2 p-2">
+                                        <mat-label>Filter</mat-label>
+                                        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Purchase" #input>
+                                    </mat-form-field>
+                                    <button class="cursor-pointer" (click)="addNewTransaction()">
+                                        <mat-icon class=" mt-1 mr-12 text-4xl" style="overflow: visible;"
+                                            color="primary">playlist_add</mat-icon>
+                                    </button>
+                                </div>
+
+                                <table mat-table [dataSource]="dataSource" matSort  class="mat-elevation-z8">
+                                    <!-- transactionId Column -->
+                                    <ng-container matColumnDef="transactionId">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Id </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.transactionId}} </td>
+                                    </ng-container>
+                                    <!-- category Column -->
+                                    <ng-container matColumnDef="category">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                                    </ng-container>
+                                    <!-- amount Column -->
+                                    <ng-container matColumnDef="amount">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                                    </ng-container>
+                                    <!-- type Column -->
+                                    <ng-container matColumnDef="type">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Type </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                                    </ng-container>
+
+                                    <!-- type Column -->
+                                    <ng-container matColumnDef="action">
+                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            <button class="cursor-pointer" (click)="editTransactionRecord(element)" > <mat-icon class="cursor-pointer text-gray-500">edit_note</mat-icon> </button>
+                                            <mat-icon class="cursor-pointer ml-3 text-red-500">delete</mat-icon>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                    <!-- Row shown when there is no matching data. -->
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell text-center text-xl text-red-500 m-2 p-2" colspan="4">No
+                                            data matching the filter "{{input.value}}"</td>
+                                    </tr>
+                                </table>
+
+                                <mat-paginator [length]="dataLength" [pageSize]="10"
+                                    [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="" *ngIf="isEditMode">
+    <div class="md:ml-[17%] lg-ml-[22%] ml-auto h-full mt-4 w-[82%]  mx-auto flex justify-center ">
+        <div class=" font-sans flex h-screen justify-center w-full">
+            <div class="p-8 min-w-full">
+                <div class="mx-auto">
+                    <div
+                        class="transition-all w-full  duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h2 class=" text-blue-600">Transactional Details Content</h2>
+                        <div class="max-w-5xl mx-auto bg-white p-16">
+                            <form [formGroup]="transactionalInformationForm">
+                                <div class="grid gap-6 mb-6 lg:grid-cols-2">
+                                    <div>
+                                        <label for="transactionDate"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Transaction
+                                            Date
+                                            <span class="text-red-800">*</span> </label>
+                                        <input type="date" id="transactionDate" name="transactionDate"
+                                            formControlName="transactionDate"
+                                            [ngClass]="{'cursor-not-allowed' : transactionalInformationForm.disabled == true }"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  
+                                    w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="First Name" required>
+                                        <div *ngIf="transactionalInformationForm.get('transactionDate')?.invalid && transactionalInformationForm.get('transactionDate')?.touched"
+                                            class="form-text error-text">
+                                            <ng-container
+                                                *ngFor="let errorMessage of getFormsError('transactionalInformation','transactionDate')"
+                                                class="text-red-800">
+                                                <span class="text-red-800"> {{ errorMessage }} </span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="type"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                            Transaction Type <span class="text-red-800">*</span></label>
+                                        <select type="text" id="type" name="type" formControlName="type"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            required>
+                                            <option selected> Select Type </option>
+                                            <option [ngValue]="transactionType.Cr"> (Inflow) Cr </option>
+                                            <option [ngValue]="transactionType.Dr"> (Outflow) Dr </option>
+                                        </select>
+                                        <div *ngIf="transactionalInformationForm.get('type')?.invalid && transactionalInformationForm.get('type')?.touched"
+                                            class="form-text error-text">
+                                            <ng-container
+                                                *ngFor="let errorMessage of getFormsError('transactionalInformation','type')"
+                                                class="text-red-800">
+                                                <span class="text-red-800"> {{ errorMessage }} </span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="category"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                            Category <span class="text-red-800">*</span></label>
+                                        <select type="text" id="category" name="category" formControlName="category"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Category of Transaction" required>
+                                            <option selected> Select Category </option>
+                                            <option value="Food"> Food </option>
+                                            <option value="Tax"> Tax </option>
+                                            <option value="Entertainment"> Entertainment </option>
+                                            <option value="Travel"> Travel </option>
+                                            <option value="Bills"> Bills </option>
+                                            <option value="Fees"> Fees </option>
+                                            <option value="Medical"> Medical </option>
+                                            <option value="Others"> Others </option>
+                                        </select>
+                                        <div *ngIf="transactionalInformationForm.get('category')?.invalid && transactionalInformationForm.get('category')?.touched"
+                                            class="form-text error-text">
+                                            <ng-container
+                                                *ngFor="let errorMessage of getFormsError('transactionalInformation','category')"
+                                                class="text-red-800">
+                                                <span class="text-red-800"> {{ errorMessage }} </span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="Amount"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Amount</label>
+                                        <input type="number" id="Amount" name="Amount" formControlName="Amount"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Amount" required>
+                                        <div *ngIf="transactionalInformationForm.get('Amount')?.invalid && transactionalInformationForm.get('Amount')?.touched"
+                                            class="form-text error-text">
+                                            <ng-container
+                                                *ngFor="let errorMessage of getFormsError('transactionalInformation','Amount')"
+                                                class="text-red-800">
+                                                <span class="text-red-800"> {{ errorMessage }} </span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="transactionDescription"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                            Transaction Description <span class="text-red-800">*</span></label>
+                                        <textarea type="tel" id="transactionDescription" name="transactionDescription"
+                                            formControlName="transactionDescription"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Transaction Description" required>
+                                        </textarea>
+                                        <div *ngIf="transactionalInformationForm.get('transactionDescription')?.invalid && transactionalInformationForm.get('transactionDescription')?.touched"
+                                            class="form-text error-text">
+                                            <ng-container
+                                                *ngFor="let errorMessage of getFormsError('transactionalInformation','transactionDescription')"
+                                                class="text-red-800">
+                                                <span class="text-red-800"> {{ errorMessage }} </span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <button type="submit" (click)="makeFormEditable()" *ngIf="!isFormEditable"
+                                    class="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                                    Edit </button> -->
+                                    
+                                <button  type="submit" (click)="submitTransaction()"
+                                    class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+
+                                <button (click)="isEditMode = !isEditMode"
+                                    class="ml-2 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

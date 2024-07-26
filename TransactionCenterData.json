@@ -1,0 +1,245 @@
+{
+  
+  "Transaction": [
+    {
+      "category": "Food",
+      "transactionId": 1,
+      "amount": 20.5,
+      "type": "Cr",
+      "transactionDate": "2023-07-01",
+      "transactionDescription": "Lunch at cafe"
+    },
+    {
+      "category": "Entertainment",
+      "transactionId": 2,
+      "amount": 50,
+      "type": "Dr",
+      "transactionDate": "2023-07-02",
+      "transactionDescription": "Movie tickets"
+    },
+    {
+      "category": "Travel",
+      "transactionId": 3,
+      "amount": 100,
+      "type": "Dr",
+      "transactionDate": "2023-07-03",
+      "transactionDescription": "Train ticket"
+    },
+    {
+      "category": "Bills",
+      "transactionId": 4,
+      "amount": 75,
+      "type": "Cr",
+      "transactionDate": "2023-07-04",
+      "transactionDescription": "Electricity bill"
+    },
+    {
+      "category": "Medical",
+      "transactionId": 5,
+      "amount": 200,
+      "type": "Dr",
+      "transactionDate": "2023-07-05",
+      "transactionDescription": "Doctor visit"
+    },
+    {
+      "category": "Food",
+      "transactionId": 6,
+      "amount": 30,
+      "type": "Cr",
+      "transactionDate": "2023-07-06",
+      "transactionDescription": "Grocery shopping"
+    },
+    {
+      "category": "Tax",
+      "transactionId": 7,
+      "amount": 500,
+      "type": "Dr",
+      "transactionDate": "2023-07-07",
+      "transactionDescription": "Tax payment"
+    },
+    {
+      "category": "Fees",
+      "transactionId": 8,
+      "amount": 100,
+      "type": "Cr",
+      "transactionDate": "2023-07-08",
+      "transactionDescription": "Membership fee"
+    },
+    {
+      "category": "Entertainment",
+      "transactionId": 9,
+      "amount": 60,
+      "type": "Dr",
+      "transactionDate": "2023-07-09",
+      "transactionDescription": "Concert ticket"
+    },
+    {
+      "category": "Travel",
+      "transactionId": 10,
+      "amount": 150,
+      "type": "Cr",
+      "transactionDate": "2023-07-10",
+      "transactionDescription": "Flight ticket"
+    },
+    {
+      "category": "Bills",
+      "transactionId": 11,
+      "amount": 80,
+      "type": "Dr",
+      "transactionDate": "2023-07-11",
+      "transactionDescription": "Water bill"
+    },
+    {
+      "category": "Medical",
+      "transactionId": 12,
+      "amount": 250,
+      "type": "Cr",
+      "transactionDate": "2023-07-12",
+      "transactionDescription": "Medicine purchase"
+    },
+    {
+      "category": "Food",
+      "transactionId": 13,
+      "amount": 25,
+      "type": "Dr",
+      "transactionDate": "2023-07-13",
+      "transactionDescription": "Dinner at restaurant"
+    },
+    {
+      "category": "Tax",
+      "transactionId": 14,
+      "amount": 600,
+      "type": "Cr",
+      "transactionDate": "2023-07-14",
+      "transactionDescription": "Income tax"
+    },
+    {
+      "category": "Fees",
+      "transactionId": 15,
+      "amount": 150,
+      "type": "Dr",
+      "transactionDate": "2023-07-15",
+      "transactionDescription": "College fee"
+    },
+    {
+      "category": "Entertainment",
+      "transactionId": 16,
+      "amount": 40,
+      "type": "Cr",
+      "transactionDate": "2023-07-16",
+      "transactionDescription": "Streaming service"
+    },
+    {
+      "category": "Travel",
+      "transactionId": 17,
+      "amount": 200,
+      "type": "Dr",
+      "transactionDate": "2023-07-17",
+      "transactionDescription": "Hotel booking"
+    },
+    {
+      "category": "Bills",
+      "transactionId": 18,
+      "amount": 90,
+      "type": "Cr",
+      "transactionDate": "2023-07-18",
+      "transactionDescription": "Internet bill"
+    },
+    {
+      "category": "Medical",
+      "transactionId": 19,
+      "amount": 300,
+      "type": "Dr",
+      "transactionDate": "2023-07-19",
+      "transactionDescription": "Hospital charges"
+    },
+    {
+      "category": "Food",
+      "transactionId": 20,
+      "amount": 35,
+      "type": "Cr",
+      "transactionDate": "2023-07-20",
+      "transactionDescription": "Fast food"
+    },
+    {
+      "category": "Tax",
+      "transactionId": 21,
+      "amount": 700,
+      "type": "Dr",
+      "transactionDate": "2023-07-21",
+      "transactionDescription": "Property tax"
+    },
+    {
+      "category": "Fees",
+      "transactionId": 22,
+      "amount": 120,
+      "type": "Cr",
+      "transactionDate": "2023-07-22",
+      "transactionDescription": "Library fee"
+    },
+    {
+      "category": "Entertainment",
+      "transactionId": 23,
+      "amount": 70,
+      "type": "Dr",
+      "transactionDate": "2023-07-23",
+      "transactionDescription": "Amusement park"
+    },
+    {
+      "category": "Travel",
+      "transactionId": 24,
+      "amount": 250,
+      "type": "Cr",
+      "transactionDate": "2023-07-24",
+      "transactionDescription": "Vacation trip"
+    },
+    {
+      "category": "Bills",
+      "transactionId": 25,
+      "amount": 100,
+      "type": "Dr",
+      "transactionDate": "2023-07-25",
+      "transactionDescription": "Phone bill"
+    },
+    {
+      "category": "Medical",
+      "transactionId": 26,
+      "amount": 350,
+      "type": "Cr",
+      "transactionDate": "2023-07-26",
+      "transactionDescription": "Surgery"
+    },
+    {
+      "category": "Food",
+      "transactionId": 27,
+      "amount": 40,
+      "type": "Dr",
+      "transactionDate": "2023-07-27",
+      "transactionDescription": "Breakfast"
+    },
+    {
+      "category": "Tax",
+      "transactionId": 28,
+      "amount": 800,
+      "type": "Cr",
+      "transactionDate": "2023-07-28",
+      "transactionDescription": "Corporate tax"
+    },
+    {
+      "category": "Fees",
+      "transactionId": 29,
+      "amount": 200,
+      "type": "Dr",
+      "transactionDate": "2023-07-29",
+      "transactionDescription": "Subscription fee"
+    },
+    {
+      "category": "Entertainment",
+      "transactionId": 30,
+      "amount": 80,
+      "type": "Cr",
+      "transactionDate": "2023-07-30",
+      "transactionDescription": "Live event"
+    }
+  ]
+}
